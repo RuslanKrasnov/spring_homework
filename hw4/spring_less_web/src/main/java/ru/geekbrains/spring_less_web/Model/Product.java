@@ -2,11 +2,26 @@ package ru.geekbrains.spring_less_web.Model;
 
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "cost")
     private int cost;
+
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+//    private List<Order> orders;
 
     public Long getId() {
         return id;
@@ -32,6 +47,14 @@ public class Product {
         this.cost = cost;
     }
 
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
+
     public Product(Long id, String title, int cost) {
         this.id = id;
         this.title = title;
@@ -40,4 +63,14 @@ public class Product {
 
     public Product() {
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
+
 }

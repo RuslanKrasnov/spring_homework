@@ -2,6 +2,3 @@ server:
   port: 8189
   servlet:
     context-path: /app
-spring:
-  h2:
-    console.enabled: true
